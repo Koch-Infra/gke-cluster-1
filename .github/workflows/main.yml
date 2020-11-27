@@ -27,12 +27,15 @@ jobs:
         uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-          
+      
+      - name: Create binary location
+        run: mkdir -p ~/bin
+      
       - name: Install Helmsman
         run: curl -L https://github.com/Praqma/helmsman/releases/download/v3.6.2/helmsman_3.6.2_linux_amd64.tar.gz | tar zx
         
-      - name: Move Helmsman to executable location
-        run: mv helmsman /usr/local/bin/helmsman
+      - name: Move Helmsman
+        run: mv helmsman ~/bin/helmsman
       
       - name: Save DigitalOcean kubeconfig with short-lived credentials
         run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ secrets.K8S_CLUSTER_NAME }}
