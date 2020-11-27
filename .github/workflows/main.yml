@@ -28,6 +28,9 @@ jobs:
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
 
+      - uses: azure/setup-kubectl@v1
+        id: install
+
       - uses: azure/setup-helm@v1
         id: install
 
@@ -48,3 +51,6 @@ jobs:
 
       - name: Run Helmsman
         run: ~/bin/helmsman --apply -f config.toml
+
+      - name: Add cluster issuers
+        run: kubectl apply -f other/cert-issuer
