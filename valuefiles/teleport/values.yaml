@@ -26,7 +26,8 @@ ingress:
      - teleport.akoch.net
 
 service:
-  type: LoadBalancer
+  type: "LoadBalancer"
+  externalTrafficPolicy: "Local"
   ports:
     proxyweb:
       port: 443
