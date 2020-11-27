@@ -7,6 +7,9 @@ proxy:
     usetlssecret: true
     secretName: teleport-ingress-tls
 
+persistence:
+  enabled: true
+
 ingress:
   enabled: true
   annotations:
