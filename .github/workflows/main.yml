@@ -38,4 +38,7 @@ jobs:
         run: mv helmsman ~/bin/helmsman
       
       - name: Save DigitalOcean kubeconfig with short-lived credentials
-        run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ secrets.K8S_CLUSTER_NAME }}
+        run: doctl kubernetes cluster kubeconfig save --expiry-seconds 1800 ${{ secrets.K8S_CLUSTER_NAME }}
+
+      - name: Run Helmsman
+        run: helmsman --apply -f config.toml
