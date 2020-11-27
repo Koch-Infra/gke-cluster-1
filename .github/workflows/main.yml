@@ -31,6 +31,9 @@ jobs:
       - uses: azure/setup-helm@v1
         id: install
 
+      - name: Install the helm-diff plugin
+        run: helm plugin install https://github.com/databus23/helm-diff
+
       - name: Create binary location
         run: mkdir -p ~/bin
 
