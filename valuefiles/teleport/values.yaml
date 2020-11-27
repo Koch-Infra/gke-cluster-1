@@ -1,3 +1,8 @@
+proxy:
+  tls:
+    enabled: true
+    usetlssecret: false
+
 ingress:
   enabled: true
   annotations:
