@@ -31,6 +31,12 @@ context = "koch-kube"
         namespace = "gitea"
         enabled = true
         chart = "gitea-charts/gitea"
+        valuefile = "valuefiles/gitea/gitea.yml"
         version = "2.0.7"
         [apps.gitea.set]
             "gitea.config.APP_NAME" = "Gitea"
+            "service.ssh.type" = "LoadBalancer"
+            "service.ssh.externalTrafficPolicy" = "Local"
+            "ingress.hosts[0]" = "$GITEA_HOST"
+            "ingress.tls[0].secretName" = "$GITEA_TLS_SECRET_NAME"
+            "ingress.tls[0].hosts[0]" = "$GITEA_HOST"

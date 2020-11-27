@@ -50,6 +50,9 @@ jobs:
         run: doctl kubernetes cluster kubeconfig save --expiry-seconds 1800 ${{ secrets.K8S_CLUSTER_NAME }}
 
       - name: Run Helmsman
+        env:
+          GITEA_HOST: ${{ secret.GITEA_INGRESS_DNS }}
+          GITEA_TLS_SECRET_NAME: ${{ secret.GITEA_INGRESS_TLS_SECRET_NAME }}
         run: ~/bin/helmsman --apply -f config.toml
 
       - name: Add cluster issuers
