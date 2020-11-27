@@ -29,10 +29,10 @@ jobs:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
 
       - uses: azure/setup-kubectl@v1
-        id: install
+        id: install-kubectl
 
       - uses: azure/setup-helm@v1
-        id: install
+        id: install-helm
 
       - name: Install the helm-diff plugin
         run: helm plugin install https://github.com/databus23/helm-diff
