@@ -19,7 +19,7 @@ context = "koch-kube"
         namespace = "infrastructure"
         enabled = true
         chart = "nginx-ingress/nginx-ingress"
-        version = "3.12.0"
+        version = "3.11.1"
     [apps.cert-manager]
         namespace = "infrastructure"
         enabled = true
