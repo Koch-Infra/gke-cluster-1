@@ -3,7 +3,7 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: nginx
     kubernetes.io/tls-acme: "true"
-    cert-manager.io/issuer: "letsencrypt-prod"
+    cert-manager.io/clusterissuer: "letsencrypt-prod"
   hosts:
     teleport.akoch.net:
     - /
