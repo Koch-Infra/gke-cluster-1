@@ -4,7 +4,8 @@ image:
 proxy:
   tls:
     enabled: true
-    usetlssecret: false
+    usetlssecret: true
+    secretName: teleport-ingress-tls
 
 ingress:
   enabled: true
