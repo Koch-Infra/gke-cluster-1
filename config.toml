@@ -23,7 +23,7 @@ context = "koch-kube"
         enabled = true
         chart = "jetstack/cert-manager"
         [apps.cert-manager.set]
-            "installCRDs" = true
+            "installCRDs" = "true"
     [apps.gitea]
         namespace = "gitea"
         enabled = true
