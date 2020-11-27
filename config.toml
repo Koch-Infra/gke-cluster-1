@@ -18,10 +18,12 @@ context = "koch-kube"
         namespace = "infrastructure"
         enabled = true
         chart = "stable/nginx-ingress"
+        version = "3.12.0"
     [apps.cert-manager]
         namespace = "infrastructure"
         enabled = true
         chart = "jetstack/cert-manager"
+        version = "1.1.0"
         [apps.cert-manager.set]
             "installCRDs" = "true"
     [apps.gitea]
