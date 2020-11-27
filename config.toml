@@ -36,5 +36,3 @@ context = "koch-kube"
         [apps.consul.set]
             "global.name" = "consul"
             "connectInject.enabled" = "true"
-            "global.tls.enabled" = "true"
-            "global.tls.verify" = "false"
