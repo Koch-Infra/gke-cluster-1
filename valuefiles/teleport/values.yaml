@@ -27,3 +27,8 @@ ingress:
 
 service:
   type: LoadBalancer
+  ports:
+    proxyweb:
+      port: 443
+      targetPort: 3080
+      protocol: TCP
