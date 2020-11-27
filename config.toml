@@ -8,6 +8,7 @@ context = "koch-kube"
 [namespaces]
     [namespaces.gitea]
     [namespaces.infrastructure]
+    [namespaces.core]
 
 [helmRepos]
     jetstack = "https://charts.jetstack.io/"
