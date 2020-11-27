@@ -51,8 +51,8 @@ jobs:
 
       - name: Run Helmsman
         env:
-          GITEA_HOST: ${{ secret.GITEA_INGRESS_DNS }}
-          GITEA_TLS_SECRET_NAME: ${{ secret.GITEA_INGRESS_TLS_SECRET_NAME }}
+          GITEA_HOST: ${{ secrets.GITEA_INGRESS_DNS }}
+          GITEA_TLS_SECRET_NAME: ${{ secrets.GITEA_INGRESS_TLS_SECRET_NAME }}
         run: ~/bin/helmsman --apply -f config.toml
 
       - name: Add cluster issuers
