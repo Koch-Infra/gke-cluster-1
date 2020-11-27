@@ -28,6 +28,9 @@ jobs:
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
 
+      - uses: azure/setup-helm@v1
+        id: install
+
       - name: Create binary location
         run: mkdir -p ~/bin
 
