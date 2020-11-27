@@ -10,9 +10,9 @@ context = "koch-kube"
     [namespaces.infrastructure]
 
 [helmRepos]
-    gitea-charts = "https://dl.gitea.io/charts/"
     jetstack = "https://charts.jetstack.io/"
     ingress-nginx = "https://kubernetes.github.io/ingress-nginx"
+    hashicorp = "https://helm.releases.hashicorp.com"
 
 [apps]
     [apps.ingress]
@@ -27,16 +27,11 @@ context = "koch-kube"
         version = "1.1.0"
         [apps.cert-manager.set]
             "installCRDs" = "true"
-    [apps.gitea]
-        namespace = "gitea"
+    [apps.consul]
+        namespace = "core"
         enabled = true
-        chart = "gitea-charts/gitea"
-        valuefile = "valuefiles/gitea/gitea.yml"
-        version = "2.0.7"
-        [apps.gitea.set]
-            "gitea.config.APP_NAME" = "Gitea"
-            "service.ssh.type" = "LoadBalancer"
-            "service.ssh.externalTrafficPolicy" = "Local"
-            "ingress.hosts[0]" = "$GITEA_HOST"
-            "ingress.tls[0].secretName" = "$GITEA_TLS_SECRET_NAME"
-            "ingress.tls[0].hosts[0]" = "$GITEA_HOST"
+        chart = "hashicorp/consul"
+        version = "0.25.0"
+        [apps.consul.set]
+            "global.name" = "consul"
+            "connectInject.enabled" = "true"
