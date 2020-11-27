@@ -8,6 +8,7 @@ context = "koch-kube"
 [namespaces]
     [namespaces.infrastructure]
     [namespaces.core]
+    [namespaces.cert-manager]
 
 [helmRepos]
     jetstack = "https://charts.jetstack.io/"
@@ -22,7 +23,7 @@ context = "koch-kube"
         chart = "ingress-nginx/ingress-nginx"
         version = "3.12.0"
     [apps.cert-manager]
-        namespace = "infrastructure"
+        namespace = "cert-manager"
         enabled = true
         chart = "jetstack/cert-manager"
         version = "1.1.0"
