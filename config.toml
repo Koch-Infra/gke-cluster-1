@@ -12,14 +12,14 @@ context = "koch-kube"
 [helmRepos]
     gitea-charts = "https://dl.gitea.io/charts/"
     jetstack = "https://charts.jetstack.io/"
-    nginx-ingress = "https://kubernetes.github.io/ingress-nginx"
+    ingress-nginx = "https://kubernetes.github.io/ingress-nginx"
 
 [apps]
     [apps.ingress]
         namespace = "infrastructure"
         enabled = true
-        chart = "nginx-ingress/nginx-ingress"
-        version = "3.11.1"
+        chart = "ingress-nginx/ingress-nginx"
+        version = "3.12.0"
     [apps.cert-manager]
         namespace = "infrastructure"
         enabled = true
