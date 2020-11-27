@@ -1,0 +1,22 @@
+context = "koch-kube"
+
+[metadata]
+    org = "github.com/koch/"
+    maintainer = "Alexander Koch"
+    description = "Deployments for personal cluster"
+
+[namespaces]
+    [namespaces.gitea]
+    [namespaces.infrastructure]
+
+[helmRepos]
+    gitea-charts = "https://dl.gitea.io/charts/"
+
+[apps]
+    [apps.gitea]
+        namespace = "gitea"
+        enabled = true
+        chart = "gitea-charts/gitea"
+        version = "2.0.7"
+        [apps.gitea.set]
+            "gitea.config.APP_NAME" = "Gitea"
