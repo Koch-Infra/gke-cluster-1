@@ -3,14 +3,12 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: nginx
     kubernetes.io/tls-acme: "true"
-    cert-manager.io/issuer: "letsencrypt-prod"
+    cert-manager.io/clusterissuer: "letsencrypt-prod"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
   hosts:
-    nexus.akoch.net:
+    artifactory.akoch.net:
     - /
   tls:
-   - secretName: nexus-ingress-tls
+   - secretName: artifactory-ingress-tls
      hosts:
-     - nexus.akoch.net
-persistence:
-  storageSize: 50Gi
+     - artifactory.akoch.net

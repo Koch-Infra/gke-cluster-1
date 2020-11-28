@@ -16,7 +16,7 @@ context = "koch-kube"
     ingress-nginx = "https://kubernetes.github.io/ingress-nginx"
     hashicorp = "https://helm.releases.hashicorp.com"
     teleport = "https://charts.releases.teleport.dev"
-    oteemo = "https://oteemo.github.io/charts"
+    center = "https://repo.chartcenter.io"
 
 [apps]
     [apps.ingress]
@@ -48,9 +48,9 @@ context = "koch-kube"
         [apps.teleport.set]
             "license.enabled" = "false"
             "config.public_address" = "teleport.akoch.net"
-    [apps.nexus]
+    [apps.artifactory]
         namespace = "development-infrastructure"
         enabled = true
-        chart = "oteemo/sonatype-nexus"
-        version = "4.0.0"
-        valuesfile = "valuefiles/nexus/values.yaml"
+        chart = "center/artifactory"
+        version = "3.3.0"
+        valuesfile = "valuefiles/artifactory/values.yaml"
