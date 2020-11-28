@@ -1,4 +1,6 @@
 web:
+  service:
+    clusterIP:
   ingress:
     enabled: true
     annotations:
