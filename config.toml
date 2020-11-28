@@ -51,6 +51,6 @@ context = "koch-kube"
     [apps.artifactory]
         namespace = "development-infrastructure"
         enabled = true
-        chart = "center/artifactory-oss"
+        chart = "center/jfrog/artifactory-oss"
         version = "3.3.0"
         valuesfile = "valuefiles/artifactory/values.yaml"
