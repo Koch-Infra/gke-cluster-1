@@ -7,7 +7,7 @@ web:
       cert-manager.io/clusterissuer: "letsencrypt-prod"
       nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     hosts:
-      - concourse.akoch.net:
+      - concourse.akoch.net
     tls:
     - secretName: concourse-ingress-tls
       hosts:
