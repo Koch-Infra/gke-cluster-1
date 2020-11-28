@@ -2,7 +2,7 @@ apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
   name: letsencrypt-prod
-  namespace: spinnaker
+  namespace: development-infrastructure
 spec:
   acme:
     email: ssl@akoch.org
