@@ -9,12 +9,14 @@ context = "koch-kube"
     [namespaces.infrastructure]
     [namespaces.core]
     [namespaces.cert-manager]
+    [namespaces.development-infrastructure]
 
 [helmRepos]
     jetstack = "https://charts.jetstack.io/"
     ingress-nginx = "https://kubernetes.github.io/ingress-nginx"
     hashicorp = "https://helm.releases.hashicorp.com"
     teleport = "https://charts.releases.teleport.dev"
+    oteemo = "https://oteemo.github.io/charts"
 
 [apps]
     [apps.ingress]
@@ -46,3 +48,8 @@ context = "koch-kube"
         [apps.teleport.set]
             "license.enabled" = "false"
             "config.public_address" = "teleport.akoch.net"
+    [apps.nexus]
+        namespace = "development-infrastructure"
+        enabled = true
+        chart = "oteemo/sonatype-nexus"
+        version = "4.0.0"
