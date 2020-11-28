@@ -16,7 +16,7 @@ context = "koch-kube"
     ingress-nginx = "https://kubernetes.github.io/ingress-nginx"
     hashicorp = "https://helm.releases.hashicorp.com"
     teleport = "https://charts.releases.teleport.dev"
-    center-jfrog = "https://repo.chartcenter.io/jfrog"
+    concourse = "https://concourse-charts.storage.googleapis.com/"
 
 [apps]
     [apps.ingress]
@@ -48,9 +48,9 @@ context = "koch-kube"
         [apps.teleport.set]
             "license.enabled" = "false"
             "config.public_address" = "teleport.akoch.net"
-    [apps.artifactory]
+    [apps.concourse]
         namespace = "development-infrastructure"
         enabled = true
-        chart = "center-jfrog/artifactory-oss"
-        version = "3.3.0"
-        valuesfile = "valuefiles/artifactory/values.yaml"
+        chart = "concourse/concourse"
+        version = "14.4.0"
+        valuesfile = "valuefiles/concourse/values.yaml"
