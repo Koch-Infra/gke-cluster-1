@@ -53,3 +53,4 @@ context = "koch-kube"
         enabled = true
         chart = "oteemo/sonatype-nexus"
         version = "4.0.0"
+        valuesfile = "valuefiles/nexus/values.yaml"
