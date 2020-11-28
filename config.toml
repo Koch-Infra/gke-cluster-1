@@ -16,7 +16,7 @@ context = "koch-kube"
     ingress-nginx = "https://kubernetes.github.io/ingress-nginx"
     hashicorp = "https://helm.releases.hashicorp.com"
     teleport = "https://charts.releases.teleport.dev"
-    center = "https://repo.chartcenter.io"
+    center = "https://repo.chartcenter.io/jfrog"
 
 [apps]
     [apps.ingress]
@@ -51,6 +51,6 @@ context = "koch-kube"
     [apps.artifactory]
         namespace = "development-infrastructure"
         enabled = true
-        chart = "center/jfrog/artifactory-oss"
+        chart = "center/artifactory-oss"
         version = "3.3.0"
         valuesfile = "valuefiles/artifactory/values.yaml"
