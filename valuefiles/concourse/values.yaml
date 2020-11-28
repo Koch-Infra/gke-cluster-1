@@ -1,3 +1,6 @@
+postgresql:
+  service:
+    clusterIP:
 web:
   service:
     api:
