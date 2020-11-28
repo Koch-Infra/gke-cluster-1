@@ -9,7 +9,7 @@ ingress:
     nexus.akoch.net:
     - /
   tls:
-   - secretName: teleport-ingress-tls
+   - secretName: nexus-ingress-tls
      hosts:
      - nexus.akoch.net
 persistence:
