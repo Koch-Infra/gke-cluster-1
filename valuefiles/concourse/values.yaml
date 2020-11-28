@@ -1,14 +1,15 @@
-ingress:
-  enabled: true
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    kubernetes.io/tls-acme: "true"
-    cert-manager.io/clusterissuer: "letsencrypt-prod"
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-  hosts:
-    concourse.akoch.net:
-    - /
-  tls:
-   - secretName: concourse-ingress-tls
-     hosts:
-     - concourse.akoch.net
+web:
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      kubernetes.io/tls-acme: "true"
+      cert-manager.io/clusterissuer: "letsencrypt-prod"
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    hosts:
+      concourse.akoch.net:
+      - /
+    tls:
+    - secretName: concourse-ingress-tls
+      hosts:
+      - concourse.akoch.net
