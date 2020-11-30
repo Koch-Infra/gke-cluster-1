@@ -17,6 +17,8 @@ context = "koch-kube"
     hashicorp = "https://helm.releases.hashicorp.com"
     teleport = "https://charts.releases.teleport.dev"
     concourse = "https://concourse-charts.storage.googleapis.com/"
+    prometheus-community = "https://prometheus-community.github.io/helm-charts"
+    grafana = "https://grafana.github.io/helm-charts"
 
 [apps]
     [apps.ingress]
@@ -55,3 +57,21 @@ context = "koch-kube"
         chart = "concourse/concourse"
         version = "14.4.0"
         valuesfile = "valuefiles/concourse/values.yaml"
+    [apps.prometheus]
+        namespace = "core"
+        enabled = "true"
+        chart = "prometheus-community/prometheus"
+        version = "12.0.1"
+        [apps.prometheus.set]
+            "global.scrape_interval" = "5s"
+            "global.scrape_timeout" = "3s"
+            "server.persistentVolume.enabled" = "true"
+            "alertmanager.enabled" = "true"
+    [apps.grafana]
+        namespace = "core"
+        enabled = "true"
+        chart = "grafana/grafana"
+        version = "6.1.10"
+        valuesfile = "valuefiles/grafana/values.yaml"
+        [apps.grafana.set]
+            "persistence.enabled" = "true"
