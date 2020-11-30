@@ -9,7 +9,7 @@ ingress:
     cert-manager.io/clusterissuer: "letsencrypt-prod"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
   hosts:
-    - teleport.akoch.net
+    - grafana.akoch.net
   tls:
    - secretName: grafana-ingress-tls
      hosts:
