@@ -52,13 +52,13 @@ context = "koch-kube"
         valuesfile = "valuefiles/concourse/values.yaml"
     [apps.prometheus]
         namespace = "core"
-        enabled = "true"
+        enabled = true
         chart = "prometheus-community/prometheus"
         version = "12.0.1"
         valuesfile = "valuefiles/prometheus/values.yaml"
     [apps.grafana]
         namespace = "core"
-        enabled = "true"
+        enabled = true
         chart = "grafana/grafana"
         version = "6.1.10"
         valuesfile = "valuefiles/grafana/values.yaml"
