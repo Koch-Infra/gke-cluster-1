@@ -42,6 +42,7 @@ context = "koch-kube"
             "global.name" = "consul"
             "connectInject.enabled" = "true"
             "connectInject.default" = "true"
+            "syncCatalog.enabled" = "true"
     [apps.teleport]
         namespace = "core"
         enabled = true
