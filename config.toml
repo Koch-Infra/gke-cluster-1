@@ -31,8 +31,7 @@ context = "koch-kube"
         enabled = true
         chart = "jetstack/cert-manager"
         version = "1.1.0"
-        [apps.cert-manager.set]
-            "installCRDs" = "true"
+        valuesfile = "valuefiles/cert-manager/values.yaml"
     [apps.consul]
         namespace = "core"
         enabled = true
@@ -45,9 +44,6 @@ context = "koch-kube"
         chart = "teleport/teleport"
         version = "0.0.7"
         valuesfile = "valuefiles/teleport/values.yaml"
-        [apps.teleport.set]
-            "license.enabled" = "false"
-            "config.public_address" = "teleport.akoch.net"
     [apps.concourse]
         namespace = "development-infrastructure"
         enabled = true
