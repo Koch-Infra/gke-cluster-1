@@ -38,11 +38,7 @@ context = "koch-kube"
         enabled = true
         chart = "hashicorp/consul"
         version = "0.25.0"
-        [apps.consul.set]
-            "global.name" = "consul"
-            "connectInject.enabled" = "true"
-            "connectInject.default" = "true"
-            "syncCatalog.enabled" = "true"
+        valuesfile = "valuefiles/consul/values.yaml"
     [apps.teleport]
         namespace = "core"
         enabled = true
@@ -63,16 +59,10 @@ context = "koch-kube"
         enabled = "true"
         chart = "prometheus-community/prometheus"
         version = "12.0.1"
-        [apps.prometheus.set]
-            "global.scrape_interval" = "5s"
-            "global.scrape_timeout" = "3s"
-            "server.persistentVolume.enabled" = "true"
-            "alertmanager.enabled" = "true"
+        valuesfile = "valuefiles/prometheus/values.yaml"
     [apps.grafana]
         namespace = "core"
         enabled = "true"
         chart = "grafana/grafana"
         version = "6.1.10"
         valuesfile = "valuefiles/grafana/values.yaml"
-        [apps.grafana.set]
-            "persistence.enabled" = "true"
