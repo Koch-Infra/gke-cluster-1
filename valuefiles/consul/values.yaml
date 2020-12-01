@@ -4,6 +4,29 @@ global:
 connectInject:
   enabled: true
   default: true
+  centralConfig:
+    enabled: true
+    # set the default protocol (can be overwritten with annotations)
+    defaultProtocol: 'http'
+    # proxyDefaults is a raw json string that will be applied to all Connect
+    # proxy sidecar pods that can include any valid configuration for the
+    # configured proxy.
+    proxyDefaults: |
+      {
+        "envoy_prometheus_bind_addr": "0.0.0.0:9102"
+      }
 
 syncCatalog:
   enabled: true
+
+server:
+  extraConfig: |
+    {
+      "ui_config": {
+        "enabled": true,
+        "metrics_provider": "prometheus",
+        "metrics_proxy": {
+          "base_url": "http://10.245.153.124"
+        }
+      }
+    }
