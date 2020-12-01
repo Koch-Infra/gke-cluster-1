@@ -44,21 +44,3 @@ context = "koch-kube"
         chart = "teleport/teleport"
         version = "0.0.7"
         valuesfile = "valuefiles/teleport/values.yaml"
-    [apps.concourse]
-        namespace = "development-infrastructure"
-        enabled = true
-        chart = "concourse/concourse"
-        version = "14.4.0"
-        valuesfile = "valuefiles/concourse/values.yaml"
-    [apps.prometheus]
-        namespace = "core"
-        enabled = true
-        chart = "prometheus-community/prometheus"
-        version = "12.0.1"
-        valuesfile = "valuefiles/prometheus/values.yaml"
-    [apps.grafana]
-        namespace = "core"
-        enabled = true
-        chart = "grafana/grafana"
-        version = "6.1.10"
-        valuesfile = "valuefiles/grafana/values.yaml"
