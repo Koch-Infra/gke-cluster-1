@@ -22,11 +22,4 @@ syncCatalog:
 server:
   extraConfig: |
     {
-      "ui_config": {
-        "enabled": true,
-        "metrics_provider": "prometheus",
-        "metrics_proxy": {
-          "base_url": "http://10.245.153.124"
-        }
-      }
     }
