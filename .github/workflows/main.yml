@@ -3,7 +3,6 @@
 name: Deploy
 
 env:
-  PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: cluster-1
   GKE_ZONE: europe-north1
 
@@ -27,6 +26,9 @@ jobs:
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
 
+      - run: |-
+          gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
+
       - uses: azure/setup-kubectl@v1
         id: install-kubectl
 
@@ -44,9 +46,6 @@ jobs:
 
       - name: Move Helmsman
         run: mv helmsman ~/bin/helmsman
-
-      - name: Get Cluster authentication
-        run: gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE" --project "$PROJECT_ID"
 
       - name: Run Helmsman
         run: ~/bin/helmsman --apply -f config.toml
