@@ -46,8 +46,8 @@ jobs:
       - name: Move Helmsman
         run: mv helmsman ~/bin/helmsman
 
-      - name: Save DigitalOcean kubeconfig with short-lived credentials
-        run: doctl kubernetes cluster kubeconfig save --expiry-seconds 1800 ${{ secrets.K8S_CLUSTER_NAME }}
+      - name: Get Cluster authentication
+        run: gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
 
       - name: Run Helmsman
         env:
