@@ -5,7 +5,6 @@ name: Deploy
 env:
   GKE_CLUSTER: cluster-1
   GKE_ZONE: europe-north1
-  GKE_PROJECT_ID: ${{ secrets.GKE_PROJECT_ID }}
 
 on:
   push:
@@ -23,12 +22,12 @@ jobs:
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@master
         with:
-          project_id: ${{ secrets.GKE_PROJECT_ID }}
+          project_id: ${{ secrets.GKE_PROJECT }}
           service_account_key: ${{ secrets.GKE_SA_KEY }}
           export_default_credentials: true
 
       - run: |-
-          gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE" --project "$GKE_PROJECT_ID"
+          gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
 
       - uses: azure/setup-kubectl@v1
         id: install-kubectl
