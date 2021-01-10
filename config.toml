@@ -6,10 +6,8 @@ context = "koch-kube"
     description = "Deployments for personal cluster"
 
 [namespaces]
-    [namespaces.infrastructure]
     [namespaces.core]
     [namespaces.cert-manager]
-    [namespaces.development-infrastructure]
 
 [helmRepos]
     jetstack = "https://charts.jetstack.io/"
@@ -18,7 +16,7 @@ context = "koch-kube"
 
 [apps]
     [apps.ingress]
-        namespace = "infrastructure"
+        namespace = "core"
         enabled = true
         chart = "ingress-nginx/ingress-nginx"
         version = "3.12.0"

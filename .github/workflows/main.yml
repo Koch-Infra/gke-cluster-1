@@ -2,31 +2,30 @@
 
 name: Deploy
 
-# Controls when the action will run.
+env:
+  PROJECT_ID: ${{ secrets.GKE_PROJECT }}
+  GKE_CLUSTER: cluster-1
+  GKE_ZONE: europe-north1
+
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Install doctl
-        uses: digitalocean/action-doctl@v2
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@master
         with:
-          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
 
       - uses: azure/setup-kubectl@v1
         id: install-kubectl
@@ -46,13 +45,10 @@ jobs:
       - name: Move Helmsman
         run: mv helmsman ~/bin/helmsman
 
-      - name: Save DigitalOcean kubeconfig with short-lived credentials
-        run: doctl kubernetes cluster kubeconfig save --expiry-seconds 1800 ${{ secrets.K8S_CLUSTER_NAME }}
+      - run: |-
+        gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
 
       - name: Run Helmsman
-        env:
-          GITEA_HOST: ${{ secrets.GITEA_INGRESS_DNS }}
-          GITEA_TLS_SECRET_NAME: ${{ secrets.GITEA_INGRESS_TLS_SECRET_NAME }}
         run: ~/bin/helmsman --apply -f config.toml
 
       - name: Add cluster issuers
