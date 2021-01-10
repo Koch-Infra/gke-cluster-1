@@ -2,8 +2,8 @@ global:
   name: consul
 
 connectInject:
-  enabled: true
-  default: true
+  enabled: false
+  default: false
   centralConfig:
     enabled: true
     # set the default protocol (can be overwritten with annotations)
@@ -17,7 +17,7 @@ connectInject:
       }
 
 syncCatalog:
-  enabled: true
+  enabled: false
 
 server:
   extraConfig: |

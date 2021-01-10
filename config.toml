@@ -6,23 +6,17 @@ context = "koch-kube"
     description = "Deployments for personal cluster"
 
 [namespaces]
-    [namespaces.infrastructure]
     [namespaces.core]
     [namespaces.cert-manager]
-    [namespaces.development-infrastructure]
 
 [helmRepos]
     jetstack = "https://charts.jetstack.io/"
     ingress-nginx = "https://kubernetes.github.io/ingress-nginx"
     hashicorp = "https://helm.releases.hashicorp.com"
-    teleport = "https://charts.releases.teleport.dev"
-    concourse = "https://concourse-charts.storage.googleapis.com/"
-    prometheus-community = "https://prometheus-community.github.io/helm-charts"
-    grafana = "https://grafana.github.io/helm-charts"
 
 [apps]
     [apps.ingress]
-        namespace = "infrastructure"
+        namespace = "core"
         enabled = true
         chart = "ingress-nginx/ingress-nginx"
         version = "3.12.0"
@@ -38,9 +32,3 @@ context = "koch-kube"
         chart = "hashicorp/consul"
         version = "0.25.0"
         valuesfile = "valuefiles/consul/values.yaml"
-    [apps.teleport]
-        namespace = "core"
-        enabled = true
-        chart = "teleport/teleport"
-        version = "0.0.8"
-        valuesfile = "valuefiles/teleport/values.yaml"
