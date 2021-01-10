@@ -46,7 +46,7 @@ jobs:
         run: mv helmsman ~/bin/helmsman
 
       - name: Get Cluster authentication
-        run: gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
+        run: gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE" --project "$PROJECT_ID"
 
       - name: Run Helmsman
         run: ~/bin/helmsman --apply -f config.toml
