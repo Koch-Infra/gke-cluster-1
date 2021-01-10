@@ -8,6 +8,7 @@ context = "koch-kube"
 [namespaces]
     [namespaces.core]
     [namespaces.cert-manager]
+    [namespaces.tfa]
 
 [helmRepos]
     jetstack = "https://charts.jetstack.io/"

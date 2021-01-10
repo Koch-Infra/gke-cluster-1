@@ -51,4 +51,4 @@ jobs:
         run: ~/bin/helmsman --apply -f config.toml
 
       - name: Add cluster issuers
-        run: kubectl apply -f other/cert-issuer
+        run: kubectl apply -f other/cert-issuer --recursive
