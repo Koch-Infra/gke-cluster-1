@@ -2,8 +2,8 @@ global:
   name: consul
 
 connectInject:
-  enabled: false
-  default: false
+  enabled: true
+  default: true
   centralConfig:
     enabled: true
     # set the default protocol (can be overwritten with annotations)
