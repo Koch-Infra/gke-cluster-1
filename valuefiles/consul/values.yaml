@@ -17,7 +17,7 @@ connectInject:
       }
 
 syncCatalog:
-  enabled: false
+  enabled: true
 
 server:
   extraConfig: |
